@@ -61,7 +61,7 @@ symbols = ["USDJPY"]
 lot_step = 0.01
 
 slippage = 3
-magic_number = 20270508  # Unique identifier for the Undecillion engine
+magic_number = 40270508  # Unique identifier for the Undecillion engine
 timezone_offset = -5  # Jamaica timezone is UTC-5
 
 session_times = {
@@ -802,7 +802,7 @@ def safe_str(val, fmt=None):
     return str(val)
 
 
-def calculate_volume(entry_price, sl_price, symbol, risk_pct=0.1):
+def calculate_volume(entry_price, sl_price, symbol, risk_pct=0.06):
     account_info = mt5.account_info()
     symbol_info = mt5.symbol_info(symbol)
 
@@ -1382,7 +1382,7 @@ def trading_loop():
                     pid = row.get("pattern_id")
 
                     try:
-                        volume = calculate_volume(entry, sl, symbol, risk_pct=0.10)
+                        volume = calculate_volume(entry, sl, symbol, risk_pct=0.06)
                     except Exception as e:
                         volume = 0.01
                         logging.error(f"Volume calculation failed: {e}")
@@ -1400,7 +1400,7 @@ def trading_loop():
                         tp,
                         volume,
                         slippage=50,
-                        magic_number=20270508
+                        magic_number=40270508
                     )
 
                     if result is None:

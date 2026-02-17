@@ -1278,7 +1278,7 @@ def trading_loop():
     global processed_signals, traded_signals, startup_complete
 
     symbols = ["GBPJPY"]
-    poll_interval = 0.1  # seconds
+    poll_interval = 2  # seconds
 
     logging.info("Starting fully-logged execution loop")
 
